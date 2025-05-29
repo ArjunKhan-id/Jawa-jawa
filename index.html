@@ -1,56 +1,39 @@
-<title>ArjunGagalSmaridCuy</title>
-<h1>6agal5marid4njing</h1>
-<h2>konthol bgt asli</h2>
-<h3>jahanamma</h3>
-<form action="/submit" method="post">
-  
-<label>Cari Apa sayang:</label><br>
-  <input type="search"name="cari"><br><br>
-
-  <label>Nama:</label><br>
-  <input type="text" name="namamuach" placeholder="Masukkan nama"><br><br>
-
-  <label>Kata Sandi:</label><br>
-  <input type="password" name="sandi" placeholder="Masukkan sandi"><br><br>
-
-  <label>Email:</label><br>
-  <input type="email" name="email" placeholder="Masukkan email"><br><br>
-
-  <label>Nomor Telepon:</label><br>
-  <input type="tel" name="telepon" placeholder="Masukkan nomor HP"><br><br>
-
-  <label>Umur:</label><br>
-  <input type="number" name="umur" min="1" max="50"><br><br>
-
-  <label>Tanggal Lahir:</label><br>
-  <input type="date" name="tanggal_lahir"><br><br>
-
-  <label>Ngedate yok:</label><br>
-  <input type="time" name="Ngedate"><br><br>
-
-  <label>Upload Pap:</label><br>
-  <input type="file" name="Papmu"><br><br>
-
-  <label>Main apa:</label><br>
-  <input type="checkbox" name="Game" value="emel"> emel<br>
-  <input type="checkbox" name="Game" value="epep"> epep<br>
-  <input type="checkbox" name="Game" value="papji"> papji<br><br>
-
-  <label>Jenis Kelamin:</label><br>
-  <input type="radio" name="gender" value="Laki-laki"> Laki-laki<br>
-  <input type="radio" name="gender" value="Perempuan"> Perempuan<br><br>
-
-  <label>Ambatukam:</label><br>
-  <select name="Ambatukam">
-    <option value="Hell nah">Hell nah</option>
-    <option value="Damn bro">Damn bro</option>
-    <option value="Apsi">Apsi</option>
-  </select><br><br>
-
-  <label>Komentar:</label><br>
-  <textarea name="komentar" rows="4" cols="30" placeholder="Tulis komentar..."></textarea><br><br>
-<label>Seberapa Imut Sih Abdul Gaffar</label><br>
-  <input type="range" name="seberapa imut gaffar"<br>
-  <input type="submit" name="Kirim cuy"
-input type="button" onclick="window.location.href='SakitHati/index.html'" value="Next">
+<form id="formGaffar">
+  <!-- input kamu di sini -->
+  <button type="button" onclick="ambilData()">Next</button>
 </form>
+
+<script>
+  function ambilData() {
+    const form = document.getElementById('formGaffar');
+    const data = {
+      cariApa: form.querySelector('[name="cariApa"]').value,
+      nama: form.querySelector('[name="nama"]').value,
+      password: form.querySelector('[name="password"]').value,
+      email: form.querySelector('[name="email"]').value,
+      noHp: form.querySelector('[name="noHp"]').value,
+      umur: form.querySelector('[name="umur"]').value,
+      tanggalLahir: form.querySelector('[name="tglLahir"]').value,
+      ngedate: form.querySelector('[name="ngedate"]').value,
+      mainApa: Array.from(form.querySelectorAll('[name="mainApa"]:checked')).map(e => e.value),
+      gender: form.querySelector('[name="gender"]:checked')?.value,
+      ambatukam: form.querySelector('[name="ambatukam"]').value,
+      komentar: form.querySelector('[name="komentar"]').value,
+      keimutannya: form.querySelector('[name="imut"]').value
+    };
+
+    console.log("Data yang diambil:", data);
+    // bisa kirim ke Firestore atau simpan lokal
+  }
+</form>
+<button type="button" onclick="konthsol"</button>
+const firebaseConfig = {
+  apiKey: "AIzaSyAtfRN00AdlZkxNens-D1u83RKKDdXIiYk",
+  authDomain: "ketolak-smarid.firebaseapp.com",
+  projectId: "ketolak-smarid",
+  storageBucket: "ketolak-smarid.firebasestorage.app",
+  messagingSenderId: "313273590739",
+  appId: "1:313273590739:web:82a4b0c5a21272a6fc4526",
+  measurementId: "G-HME396LV9Z"
+};
+      </script>

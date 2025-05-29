@@ -1,33 +1,58 @@
-<form id="formGaffar">
-  <!-- input kamu di sini -->
-  <button type="button" onclick="ambilData()">Next</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form Abdul Gaffar</title>
+</head>
+<body style="background-color: black; color: white; font-family: sans-serif;">
 
-<script>
-  function ambilData() {
-    const form = document.getElementById('formGaffar');
-    const data = {
-      cariApa: form.querySelector('[name="cariApa"]').value,
-      nama: form.querySelector('[name="nama"]').value,
-      password: form.querySelector('[name="password"]').value,
-      email: form.querySelector('[name="email"]').value,
-      noHp: form.querySelector('[name="noHp"]').value,
-      umur: form.querySelector('[name="umur"]').value,
-      tanggalLahir: form.querySelector('[name="tglLahir"]').value,
-      ngedate: form.querySelector('[name="ngedate"]').value,
-      mainApa: Array.from(form.querySelectorAll('[name="mainApa"]:checked')).map(e => e.value),
-      gender: form.querySelector('[name="gender"]:checked')?.value,
-      ambatukam: form.querySelector('[name="ambatukam"]').value,
-      komentar: form.querySelector('[name="komentar"]').value,
-      keimutannya: form.querySelector('[name="imut"]').value
-    };
+  <h2>konthol bgt asli</h2>
+  <p>jahanamma</p>
 
-    console.log("Data yang diambil:", data);
-    // bisa kirim ke Firestore atau simpan lokal
-  }
-</form>
-<button type="button" onclick="konthsol"</button>
-const firebaseConfig = {
+  <form id="formGaffar">
+    Cari Apa sayang: <input type="text" name="cariApa"><br><br>
+
+    Nama: <input type="text" name="nama" placeholder="Masukkan nama"><br><br>
+    Kata Sandi: <input type="password" name="password" placeholder="Masukkan sandi"><br><br>
+    Email: <input type="email" name="email" placeholder="Masukkan email"><br><br>
+    Nomor Telepon: <input type="tel" name="noHp" placeholder="Masukkan nomor HP"><br><br>
+    Umur: <input type="number" name="umur"><br><br>
+    Tanggal Lahir: <input type="date" name="tglLahir"><br><br>
+    Ngedate yok: <input type="date" name="ngedate"><br><br>
+    Upload Pap: <input type="file" name="uploadPap"><br><br>
+
+    Main apa:<br>
+    <input type="checkbox" name="mainApa" value="emel"> emel<br>
+    <input type="checkbox" name="mainApa" value="epep"> epep<br>
+    <input type="checkbox" name="mainApa" value="papji"> papji<br><br>
+
+    Jenis Kelamin:<br>
+    <input type="radio" name="gender" value="Laki-laki"> Laki-laki<br>
+    <input type="radio" name="gender" value="Perempuan"> Perempuan<br><br>
+
+    Ambatukam:
+    <select name="ambatukam">
+      <option value="Hell nah">Hell nah</option>
+      <option value="Yessir">Yessir</option>
+    </select><br><br>
+
+    Komentar:<br>
+    <textarea name="komentar" placeholder="Tulis komentar..."></textarea><br><br>
+
+    Seberapa Imut Sih Abdul Gaffar:
+    <input type="range" name="imut" min="0" max="100"><br><br>
+
+    <button type="button" onclick="simpanKeFirestore()">Next</button>
+  </form>
+
+  <!-- Firebase SDK (modular) -->
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+    // ✅ GANTI DENGAN DATA DARI FIREBASE PROJECT KAMU
+    const firebaseConfig = {
   apiKey: "AIzaSyAtfRN00AdlZkxNens-D1u83RKKDdXIiYk",
   authDomain: "ketolak-smarid.firebaseapp.com",
   projectId: "ketolak-smarid",
@@ -36,4 +61,39 @@ const firebaseConfig = {
   appId: "1:313273590739:web:82a4b0c5a21272a6fc4526",
   measurementId: "G-HME396LV9Z"
 };
-      </script>
+
+    // Inisialisasi Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Fungsi untuk simpan data ke Firestore
+    window.simpanKeFirestore = async function () {
+      const form = document.getElementById('formGaffar');
+      const data = {
+        cariApa: form.cariApa.value,
+        nama: form.nama.value,
+        password: form.password.value,
+        email: form.email.value,
+        noHp: form.noHp.value,
+        umur: form.umur.value,
+        tglLahir: form.tglLahir.value,
+        ngedate: form.ngedate.value,
+        mainApa: Array.from(form.querySelectorAll('[name="mainApa"]:checked')).map(e => e.value),
+        gender: form.querySelector('[name="gender"]:checked')?.value || '',
+        ambatukam: form.ambatukam.value,
+        komentar: form.komentar.value,
+        imut: form.imut.value
+      };
+
+      try {
+        await addDoc(collection(db, "pendaftaranGaffar"), data);
+        alert("Data berhasil disimpan ke Firestore!");
+      } catch (e) {
+        console.error("Gagal menyimpan data:", e);
+        alert("Gagal menyimpan data!");
+      }
+    };
+  </script>
+
+</body>
+</html>

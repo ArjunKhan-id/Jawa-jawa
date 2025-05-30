@@ -26,6 +26,11 @@
     </style>
 </head>
 <body>
+<p>   <div style="margin-top: 30px;">
+  <button onclick="goBack()">⬅️ Back</button>
+  <button onclick="goNext()">Next ➡️</button>
+    </div></p>
+    
     <h6>⚠️ Warning! Jumpscare Alert!</h6>
     <div id="clock">00:00:00</div>
     <div id="countdown">3</div>
@@ -80,6 +85,14 @@ video.style.display = "block";
 video.muted = false;
 video.volume = 1.0;
 video.play();
+                
+                function goBack() {
+  window.history.back(); // atau load video sebelumnya
+}
+
+function goNext() {
+  window.location.href = "halaman-berikutnya.html"; // atau load video berikutnya
+}
     </script>
 </body>
 </html>

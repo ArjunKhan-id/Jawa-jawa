@@ -1,56 +1,64 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Hello World</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin-top: 100px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awas Bang</title>
+  <h6>Warning!Jumpscare Alert!</h6>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        #clock {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        #countdown {
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
+    <div id="clock">00:00:00</div>
+    <div id="countdown">3</div>
 
-<div id="clock">00:00:00</div>
+    <video controls autoplay muted width="1000">
+        <source src="https://github.com/ArjunKhan-id/Jawa-jawa/raw/main/video/VID-20250530-WA0034.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-<script>
-function updateClock() {
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const seconds = String(now.getSeconds()).padStart(2, '0');
-  const timeString = `${hours}:${minutes}:${seconds}`;
-  document.getElementById('clock').textContent = timeString;
-}
+    <script>
+        // Digital Clock
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
 
-// Update clock every second
-setInterval(updateClock, 1000);
-updateClock(); // Initial call
-</script>
-
-<div id="countdown"></div>
-
-<script>
-let count = 3;
-const countDown = document.getElementById("countdown");
-
-const interval = setInterval(() => {
-  count--;
-  if (count > 0) {
-    countDown.textContent = count;
-  } else {
-    clearInterval(interval);
-    countDown.style.display = 'none';
-  }
-}, 1000);
-</script>
-
-<video controls autoplay width="1000">
-  <source src="https://github.com/ArjunKhan-id/Jawa-jawa/raw/main/video/VID-20250530-WA0034.mp4" type="video/mp4">
-  Browser tidak mendukung tag video.
-</video>
-
+        // Countdown
+        let count = 3;
+        const countDown = document.getElementById("countdown");
+        const countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) {
+                countDown.textContent = count;
+            } else {
+                clearInterval(countdownInterval);
+                countDown.style.display = 'none';
+            }
+        }, 1000);
+    </script>
 </body>
 </html>

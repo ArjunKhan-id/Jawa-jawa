@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awas Bang</title>
-  <h6>Warning!Jumpscare Alert!</h6>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,20 +19,26 @@
             font-weight: bold;
             margin: 20px 0;
         }
-        video {
-            max-width: 100%;
-            height: auto;
+        #jumpscare {
+            display: none;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
+    <h6>⚠️ Warning! Jumpscare Alert!</h6>
     <div id="clock">00:00:00</div>
     <div id="countdown">3</div>
 
+    <div id="jumpscare">
+        <video width="560" height="315" controls autoplay muted loop>
+            <source src="VID-20250530-WA0034.mp4" type="video/mp4">
+            Browsermu tidak mendukung video.
+        </video>
+    </div>
 
-    
     <script>
-        // Digital Clock
+        // Jam Digital
         function updateClock() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
@@ -47,6 +52,8 @@
         // Countdown
         let count = 3;
         const countDown = document.getElementById("countdown");
+        const jumpscare = document.getElementById("jumpscare");
+
         const countdownInterval = setInterval(() => {
             count--;
             if (count > 0) {
@@ -54,11 +61,9 @@
             } else {
                 clearInterval(countdownInterval);
                 countDown.style.display = 'none';
+                jumpscare.style.display = 'block'; // Tampilkan video setelah hitung mundur selesai
             }
         }, 1000);
-        <video width="560" height="315" controls autoplay muted loop>
-    <source src="VID-20250530-WA0034.mp4" type="video/mp4">
-</video>
     </script>
 </body>
 </html>

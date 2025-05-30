@@ -1,98 +1,106 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awas Bang</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-        }
-        #clock {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        #countdown {
-            font-size: 5rem;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        #jumpscare {
-            display: none;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awas Bang</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #clock {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 5rem;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    #flash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      z-index: 9999;
+      opacity: 1;
+      display: none;
+      transition: opacity 0.5s ease;
+    }
+    #vid {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-<p>   <div style="margin-top: 30px;">
+<div style="margin-top: 30px;">
   <button onclick="goBack()">⬅️ Back</button>
   <button onclick="goNext()">Next ➡️</button>
-    </div></p>
-    
-    <h6>⚠️ Warning! Jumpscare Alert!</h6>
-    <div id="clock">00:00:00</div>
-    <div id="countdown">3</div>
+</div>
+  <h6>⚠️ Warning! Jumpscare Alert!</h6>
+  <div id="clock">00:00:00</div>
+  <div id="countdown">3</div>
+  <div id="flash"></div>
 
-    <div id="jumpscare">
-        <video width="560" height="315" controls loop>
-           style=" display: none;">
-            <source src="VID-20250530-WA0074.mp4" type="video/mp4">
-            Browsermu tidak mendukung video.
-        </video>
-    </div>
+  <video id="vid" width="560" height="315" controls loop>
+    <source src="VID-20250530-WA0074.mp4" type="video/mp4">
+    Browsermu tidak mendukung video.
+  </video>
 
-    <script>
-        // Jam Digital
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
+  <script>
+    // Jam Digital
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-        // Countdown
-        let count = 3;
-        const countDown = document.getElementById("countdown");
-        const jumpscare = document.getElementById("jumpscare");
+    // Countdown
+    let count = 3;
+    const countDown = document.getElementById("countdown");
 
-        const countdownInterval = setInterval(() => {
-            count--;
-            if (count > 0) {
-                countDown.textContent = count;
-            } else {
-                // Countdown selesai
-clearInterval(countdownInterval);
-countDown.style.display = 'none';
+    const countdownInterval = setInterval(() => {
+      count--;
+      if (count > 0) {
+        countDown.textContent = count;
+      } else {
+        clearInterval(countdownInterval);
+        countDown.style.display = 'none';
 
-// Flash
-const flash = document.getElementById("flash");
-flash.style.display = "block";
-setTimeout(() => {
-    flash.style.opacity = 0;
-    setTimeout(() => {
-        flash.style.display = "none";
-    }, 500);
-}, 50);
+        // Flash
+        const flash = document.getElementById("flash");
+        flash.style.display = "block";
+        setTimeout(() => {
+          flash.style.opacity = 0;
+          setTimeout(() => {
+            flash.style.display = "none";
+          }, 500);
+        }, 50);
 
-// Tampilkan video dan putar dengan suara
-const video = document.getElementById("vid");
-video.style.display = "block";
-video.muted = false;
-video.volume = 1.0;
-video.play();
-                
-                function goBack() {
+        // Play video
+        const video = document.getElementById("vid");
+        video.style.display = "block";
+        video.muted = false;
+        video.volume = 1.0;
+        video.play();
+      }
+    }, 1000);
+function goBack() {
   window.history.back(); // atau load video sebelumnya
 }
 
 function goNext() {
   window.location.href = "halaman-berikutnya.html"; // atau load video berikutnya
 }
-    </script>
+  </script>
 </body>
 </html>

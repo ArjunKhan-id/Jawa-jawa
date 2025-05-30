@@ -3,41 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Anjay Arjun Bikin Link Dongg</title>
-</head>
-<body style="background-color: black; color: white; font-family: sans-serif;">
-<html>
+  
 
-  <head>
+ <!-- Judul & Jam Realtime -->
+<label style="font-size: 32px;">Waktu DitempatMu</label>
+<div id="clock" style="font-size: 48px; margin-top: 20px;">00:00:00</div>
 
-    <title>Waktu DitempatMu</title>
+<script>
+  function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+</script>
 
-    <link rel="stylesheet" href="styles.css" />
-
-  </head>
-
-  <body>
-
-      <h1 class="title">Waktu DitempatMu </h1>
-
-      <p id="currentTime"></p>
-
-      <script src="script.js"></script>
-
-  </body>
-
-</html>
   <h2>konthol bgt asli</h2>
   <p>jahanamma</p>
 
   <form id="formGaffar">
     Cari Apa sayang: <input type="text" name="cariApa"><br><br>
-
     Nama: <input type="text" name="nama" placeholder="Masukkan nama"><br><br>
-    
     Email: <input type="email" name="email" placeholder="Masukkan email"><br><br>
     Nomor Telepon: <input type="tel" name="noHp" placeholder="Masukkan nomor HP"><br><br>
     Umur: <input type="number" name="umur"><br><br>
-    Tanggal Lahir: <input type="date" name="tglLahir" min="1" max="40"><br><br>
+    Tanggal Lahir: <input type="date" name="tglLahir"><br><br>
     
     Upload Pap: <input type="file" name="uploadPap"><br><br>
 
@@ -65,45 +58,41 @@
     <button type="button" onclick="simpanKeFirestore()">Next</button>
   </form>
 
+  <!-- Tombol pindah halaman -->
+  <button onclick="window.location.href='Burit.html'">Pencet njing</button>
+
   <!-- Firebase SDK (modular) -->
   <script type="module">
-    // Import Firebase modules
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
-    // ✅ GANTI DENGAN DATA DARI FIREBASE PROJECT KAMU
     const firebaseConfig = {
-  apiKey: "AIzaSyAtfRN00AdlZkxNens-D1u83RKKDdXIiYk",
-  authDomain: "ketolak-smarid.firebaseapp.com",
-  projectId: "ketolak-smarid",
-  storageBucket: "ketolak-smarid.firebasestorage.app",
-  messagingSenderId: "313273590739",
-  appId: "1:313273590739:web:82a4b0c5a21272a6fc4526",
-  measurementId: "G-HME396LV9Z"
-};
+      apiKey: "AIzaSyAtfRN00AdlZkxNens-D1u83RKKDdXIiYk",
+      authDomain: "ketolak-smarid.firebaseapp.com",
+      projectId: "ketolak-smarid",
+      storageBucket: "ketolak-smarid.firebasestorage.app",
+      messagingSenderId: "313273590739",
+      appId: "1:313273590739:web:82a4b0c5a21272a6fc4526",
+      measurementId: "G-HME396LV9Z"
+    };
 
-    // Inisialisasi Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    // Fungsi untuk simpan data ke Firestore
     window.simpanKeFirestore = async function () {
       const form = document.getElementById('formGaffar');
       const data = {
         cariApa: form.cariApa.value,
         nama: form.nama.value,
-        
         email: form.email.value,
         noHp: form.noHp.value,
         umur: form.umur.value,
         tglLahir: form.tglLahir.value,
-        
         mainApa: Array.from(form.querySelectorAll('[name="mainApa"]:checked')).map(e => e.value),
         gender: form.querySelector('[name="gender"]:checked')?.value || '',
         ambatukam: form.ambatukam.value,
         komentar: form.komentar.value,
         imut: form.imut.value
-      
       };
 
       try {
@@ -114,8 +103,7 @@
         alert("Gagal menyimpan data!");
       }
     };
-    <button onclick="window.location.href='Burit.html'">Pencet njing</button>
   </script>
 
 </body>
-</html>
+        </html>

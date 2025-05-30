@@ -50,12 +50,13 @@
     </select><br><br>
 
     Komentar:<br>
-    <textarea name="komentar" placeholder="Tulis komentar..."></textarea><br><br>
+    <textarea name="komentar" placeholder="Tulis komentar jawa..."></textarea><br><br>
 
     Seberapa Imut Sih Abdul Gaffar:
-    <input type="range" name="imut" min="0" max="100"><br><br>
+    <input type="range" name="imut" min="0" max="100"value="20" oninput="updateImutValue(this.value)">
+<span id="imutValue">20</span>><br><br>
 
-    <button type="button" onclick="simpanKeFirestore()">Next</button>
+    <button type="button" onclick="simpanKeFirestore()">Kirim</button>
   </form><br>
 
   <!-- Tombol pindah halaman -->
@@ -96,7 +97,7 @@
       };
 
       try {
-        await addDoc(collection(db, "pendaftaranGaffar"), data);
+        await addDoc(collection(db, "BotakGaffar"), data);
         alert("Data berhasil disimpan ke Firestore!");
       } catch (e) {
         console.error("Gagal menyimpan data:", e);

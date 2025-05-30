@@ -31,7 +31,8 @@
     <div id="countdown">3</div>
 
     <div id="jumpscare">
-        <video width="560" height="315" controls autoplay loop>
+        <video width="560" height="315" controls loop>
+           style=" display: none;">
             <source src="VID-20250530-WA0074.mp4" type="video/mp4">
             Browsermu tidak mendukung video.
         </video>
@@ -59,11 +60,26 @@
             if (count > 0) {
                 countDown.textContent = count;
             } else {
-                clearInterval(countdownInterval);
-                countDown.style.display = 'none';
-                jumpscare.style.display = 'block'; // Tampilkan video setelah hitung mundur selesai
-            }
-        }, 1000);
+                // Countdown selesai
+clearInterval(countdownInterval);
+countDown.style.display = 'none';
+
+// Flash
+const flash = document.getElementById("flash");
+flash.style.display = "block";
+setTimeout(() => {
+    flash.style.opacity = 0;
+    setTimeout(() => {
+        flash.style.display = "none";
+    }, 500);
+}, 50);
+
+// Tampilkan video dan putar dengan suara
+const video = document.getElementById("vid");
+video.style.display = "block";
+video.muted = false;
+video.volume = 1.0;
+video.play();
     </script>
 </body>
 </html>

@@ -30,8 +30,26 @@
     setInterval(updateClock, 1000);
     updateClock(); // panggil sekali langsung saat halaman dimuat
   </script>
+  <h1>warning! Jumpscare ALERT!</h1>
+  <div id="countdown">3</div>
+
+<script>
+  let count = 3;
+  const countdownEl = document.getElementById('countdown');
+
+  const interval = setInterval(() => {
+    count--;
+    if (count > 0) {
+      countdownEl.textContent = count;
+    } else {
+      clearInterval(interval);
+      countdownEl.style.display = 'none'; // sembunyikan setelah selesai
+      // lanjut ke aksi berikutnya, misal tampilkan video
+    }
+  }, 1000);
+</script>
   <script>
-<video width="640" height="360" controls>
+<video width="640" height="360" autoplay muted loop>
   <source src="https://github.com/ArjunKhan-id/Jawa-jawa/blob/main/video/VID-20250530-WA0034.mp4" type="video/mp4">
   Browser kamu tidak mendukung video tag.
 </video>

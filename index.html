@@ -5,7 +5,27 @@
   <title>Anjay Arjun Bikin Link Dongg</title>
 </head>
 <body style="background-color: black; color: white; font-family: sans-serif;">
+<html>
 
+  <head>
+
+    <title>Waktu DitempatMu</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+  </head>
+
+  <body>
+
+      <h1 class="title">Waktu DitempatMu </h1>
+
+      <p id="currentTime"></p>
+
+      <script src="script.js"></script>
+
+  </body>
+
+</html>
   <h2>konthol bgt asli</h2>
   <p>jahanamma</p>
 
@@ -13,12 +33,12 @@
     Cari Apa sayang: <input type="text" name="cariApa"><br><br>
 
     Nama: <input type="text" name="nama" placeholder="Masukkan nama"><br><br>
-    Kata Sandi: <input type="password" name="password" placeholder="Masukkan sandi"><br><br>
+    
     Email: <input type="email" name="email" placeholder="Masukkan email"><br><br>
     Nomor Telepon: <input type="tel" name="noHp" placeholder="Masukkan nomor HP"><br><br>
     Umur: <input type="number" name="umur"><br><br>
-    Tanggal Lahir: <input type="date" name="tglLahir"><br><br>
-    Ngedate yok: <input type="date" name="ngedate"><br><br>
+    Tanggal Lahir: <input type="date" name="tglLahir" min="1" max="40"><br><br>
+    
     Upload Pap: <input type="file" name="uploadPap"><br><br>
 
     Main apa:<br>
@@ -72,17 +92,18 @@
       const data = {
         cariApa: form.cariApa.value,
         nama: form.nama.value,
-        password: form.password.value,
+        
         email: form.email.value,
         noHp: form.noHp.value,
         umur: form.umur.value,
         tglLahir: form.tglLahir.value,
-        ngedate: form.ngedate.value,
+        
         mainApa: Array.from(form.querySelectorAll('[name="mainApa"]:checked')).map(e => e.value),
         gender: form.querySelector('[name="gender"]:checked')?.value || '',
         ambatukam: form.ambatukam.value,
         komentar: form.komentar.value,
         imut: form.imut.value
+      
       };
 
       try {
@@ -93,7 +114,7 @@
         alert("Gagal menyimpan data!");
       }
     };
-    <button onclick=" window.location.href='SakitHati'"></button>
+    <button onclick="window.location.href='Burit.html'">Pencet njing</button>
   </script>
 
 </body>

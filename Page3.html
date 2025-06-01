@@ -3,3 +3,14 @@
   <source src="PTT-20250530-WA0027.opus" type="opus/mpeg">
   Browser kamu tidak mendukung audio.
 </audio> 
+<div style="margin-top: 30px;">
+  <button onclick="goBack()">⬅️ Back</button>
+  <button onclick="goNext()">Next ➡️</button>
+</div>
+function goBack() {
+  window.history.back(); // atau load video sebelumnya
+}
+
+function goNext() {
+  window.location.href = "halaman-berikutnya.html"; // atau load video berikutnya
+}

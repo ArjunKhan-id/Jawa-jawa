@@ -21,8 +21,8 @@
   updateClock();
 </script>
 
-  <h2>konthol bgt asli</h2>
-  <p>jahanamma</p>
+  <h2>plis smarid,why u tolak my loved :(</h2>
+  <p>gw bakar jg lu😔</p>
 
   <form id="formGaffar">
     Cari Apa sayang: <input type="text" name="cariApa"><br><br>
@@ -55,9 +55,27 @@
     Seberapa Imut Sih Abdul Gaffar:
     <p>
     <img src="IMG-20250530-WA0067.jpg" alt="Error 404" style="width: 300px;"></p>
-<input type="range" name="imut" min="0%" max="100%" value="20%" oninput="updateImutValue(this.value)">
+<input type="range" name="imut" min="0%" max="100%" value="20" oninput="updateImutValue(this.value)">
 <span id="imutValue">20%</span><br><br>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfqVzZ1WyfEaQsNftQ-HHBvgiPRhDomKk&callback=initMap"
+  async defer></script>
 
+<div id="map" style="height: 400px; width: 100%;"></div><br>
+
+<script>
+  function initMap() {
+    // Ganti koordinat di sini
+    var lokasi = { lat: -0.5167484, lng: 117.1494169 }; // Koordinat baru
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: lokasi
+    });
+    var marker = new google.maps.Marker({ position: lokasi, map: map });
+  }
+</script>
+<h1>Dicari 1v1,yg seimbang lah</h1>
+    <h6>(Minimal anak padaelo/lambung/gg langgar!!)</h6>
 <script>
 function updateImutValue(value) {
     document.getElementById('imutValue').textContent = value;

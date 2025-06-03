@@ -43,9 +43,15 @@
             });
         }
 
-        // Simulasi pemanggilan fungsi ketika jaringan lemah
-        // Anda bisa memanggil fungsi ini berdasarkan kondisi jaringan
-        showWeakNetworkAlert();
+        // Event listener untuk mendeteksi perubahan status jaringan
+        window.addEventListener('offline', function() {
+            showWeakNetworkAlert(); // Tampilkan alert ketika offline
+        });
+
+        window.addEventListener('online', function() {
+            // Jika ingin menampilkan pesan ketika kembali online, bisa ditambahkan di sini
+            console.log('Koneksi kembali online');
+        });
     </script>
 
 </body>

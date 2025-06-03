@@ -1,53 +1,52 @@
-<style>
-  video {
-    width: 100%;
-    height: auto;
-    display: block;
-    max-width: 560px; /* Opsional, supaya tidak terlalu besar di layar lebar */
-    margin: auto; /* Biar video di tengah */
-  }
-</style>
-<div>
-<video id="vid" controls loop>
-  <source src="lv_7496544010765438261_20250602214143.mp4" type="video/mp4">
-  Browsermu tidak mendukung video.
-</video>
-  <button onclick="goBack()">⬅️ Back</button>
-  <button onclick="goNext()">Next ➡️</button>
-</div>
-<script>
-  function goBack() {
-  window.history.back(); // atau load video sebelumnya
-}
-
-function goNext() {
-  window.location.href = "nexttt pageee (ex 5)"; // atau load video berikutnya
-}
-</script>
-
-  <body>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dialog Jaringan Lemah</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-width: 560px; /* Opsional, supaya tidak terlalu besar di layar lebar */
+            margin: auto; /* Biar video di tengah */
+        }
+    </style>
 </head>
 <body>
 
-<script>
-    // Fungsi untuk menampilkan dialog jaringan lemah
-    function showWeakNetworkAlert() {
-        Swal.fire({
-            title: 'Jaringan Lemah',
-            text: 'Koneksi jaringan Anda tidak stabil. Silakan periksa koneksi Anda.',
-            icon: 'warning',
-            confirmButtonText: 'OK'
-        });
-    }
+    <video id="vid" controls loop>
+        <source src="lv_7496544010765438261_20250602214143.mp4" type="video/mp4">
+        Browsermu tidak mendukung video.
+    </video>
+    <button onclick="goBack()">⬅️ Back</button>
+    <button onclick="goNext()">Next ➡️</button>
 
-    // Simulasi pemanggilan fungsi ketika jaringan lemah
-    // Anda bisa memanggil fungsi ini berdasarkan kondisi jaringan
-    showWeakNetworkAlert();
-</script>
+    <script>
+        function goBack() {
+            window.history.back(); // atau load video sebelumnya
+        }
 
+        function goNext() {
+            window.location.href = "nexttt pageee (ex 5)"; // atau load video berikutnya
+        }
 
+        // Fungsi untuk menampilkan dialog jaringan lemah
+        function showWeakNetworkAlert() {
+            Swal.fire({
+                title: 'Jaringan Lemah',
+                text: 'Koneksi jaringan Anda tidak stabil. Silakan periksa koneksi Anda.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+        }
+
+        // Simulasi pemanggilan fungsi ketika jaringan lemah
+        // Anda bisa memanggil fungsi ini berdasarkan kondisi jaringan
+        showWeakNetworkAlert();
+    </script>
+
+</body>
+</html>

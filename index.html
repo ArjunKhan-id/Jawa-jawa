@@ -20,6 +20,8 @@
         setInterval(updateClock, 1000);
         updateClock();
     </script>
+
+    <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
 
@@ -41,8 +43,11 @@
         <button type="button" onclick="simpanKeFirestore()">Kirim</button>
     </form><br>
 
-    <!-- Tombol pindah halaman -->
-    <button onclick="window.location.href='Burit.html'">Pencet njing</button>
+    <!-- Tombol Pindah Halaman -->
+    <div>
+        <button onclick="goBack()">Back</button>
+        <button onclick="goNext()">Next</button>
+    </div>
 
     <!-- Firebase SDK (modular) -->
     <script type="module">
@@ -62,11 +67,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        const CLIENT_ID = '126930480208-
-
-5a6a82esl0b8bbk7qve91crv9omcrpaf.ap
-
-ps.googleusercontent.com';
+        const CLIENT_ID = '126930480208-5a6a82esl0b8bbk7qve91crv9omcrpaf.apps.googleusercontent.com';
         const API_KEY = 'AIzaSyDZnmEk9nX9xHR-36-bUxdHpQ5eXlvtj4s';
         const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
         const SCOPES = 'https://www.googleapis.com/auth/drive.file';
@@ -152,16 +153,15 @@ ps.googleusercontent.com';
 
         handleClientLoad();
     </script>
-<script>
-  function goBack() {
-  window.history.back(); // atau load video sebelumnya
-}
 
+    <script>
+        function goBack() {
+            window.history.back(); // Kembali ke halaman sebelumnya
+        }
 
-    
- function goNext() {
-  window.location.href = "Burit.html"; // atau load video berikutnya
- }
-</script> 
+        function goNext() {
+            window.location.href = "Burit.html"; // Pindah ke halaman Burit.html
+        }
+    </script>
 </body>
 </html>
